@@ -36,7 +36,10 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+<!--        <strong th:text="${category.name}">Category Title</strong>-->
+        <div  th:each="cat,iterStat : ${category}">
+        <button th:text="${cat.name}">Category name</button>
+        </div>
     </div>
 
     <div id="products" class="row">
@@ -50,6 +53,7 @@
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+<!--                        <p class="lead" th:text="${category.name}">100 USD</p>-->
                     </div>
                     <div class="card-text">
                         <a class="btn btn-success" href="#">Add to cart</a>
