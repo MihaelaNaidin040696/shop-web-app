@@ -25,7 +25,7 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}" />
 </head>
 
 <body>
@@ -34,13 +34,22 @@
     <h1>Codecool Shop</h1>
 </div>
 
-<div class="container">
-    <div class="card">
-<!--        <strong th:text="${category.name}">Category Title</strong>-->
-        <div  th:each="cat,iterStat : ${category}">
-        <button th:text="${cat.name}">Category name</button>
+<div class="filter">
+    <div class="filter-container">
+        <div class="filter-label">Filter by Category</div>
+        <div class="filter-items" th:each="category,iterStat : ${categories}">
+            <div><a th:href="@{/(category=${category.getId()})}" th:text="${category.name}"></a></div>
+        </div>
+    </div><br>
+    <div class="filter-container">
+        <div class="filter-label">Filter by Supplier</div>
+        <div class="filter-items" th:each="supplier,iterStat : ${suppliers}">
+            <div><a th:href="@{/(supplier=${supplier.getId()})}" th:text="${supplier.name}"></a></div>
         </div>
     </div>
+</div>
+
+<div class="container">
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
@@ -53,7 +62,6 @@
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-<!--                        <p class="lead" th:text="${category.name}">100 USD</p>-->
                     </div>
                     <div class="card-text">
                         <a class="btn btn-success" href="#">Add to cart</a>
