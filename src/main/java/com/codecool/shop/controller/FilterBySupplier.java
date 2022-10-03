@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = {"/home/supplier/"},loadOnStartup=2)
+@WebServlet(urlPatterns = {"/supplier/"},loadOnStartup=2)
 public class FilterBySupplier extends HttpServlet {
 
     @Override

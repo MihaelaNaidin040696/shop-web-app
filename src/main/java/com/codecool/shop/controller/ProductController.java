@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet(urlPatterns = {"/"})
 public class ProductController extends HttpServlet {
 
     @Override

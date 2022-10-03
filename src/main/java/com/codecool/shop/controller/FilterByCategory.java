@@ -8,7 +8,6 @@ import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.ProductCategory;
-import com.codecool.shop.model.Supplier;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -22,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = {"/home/category/"},loadOnStartup=3)
+@WebServlet(urlPatterns = {"/category/"},loadOnStartup=3)
 public class FilterByCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
