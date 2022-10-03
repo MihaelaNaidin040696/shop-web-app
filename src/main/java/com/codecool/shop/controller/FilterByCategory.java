@@ -7,11 +7,8 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
-import com.codecool.shop.service.ProductService;
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -25,9 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@WebServlet(urlPatterns = {"/home/supplier/"},loadOnStartup=2)
-public class FilterBySupplier extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/home/category/"},loadOnStartup=3)
+public class FilterByCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDataStore = ProductDaoMem.getInstance();
@@ -39,13 +35,15 @@ public class FilterBySupplier extends HttpServlet {
 
         Map<String, Object> params = new HashMap<>();
 
-        if(!req.getParameter("supplier").equals("")) {
-            int supplierId = Integer.parseInt(req.getParameter("supplier"));
-            Supplier supplier = supplierDataStore.find(supplierId);
+        if(!req.getParameter("category").equals("")) {
+            int categoryId = Integer.parseInt(req.getParameter("category"));
+            System.out.println(categoryId);
+            ProductCategory productCategory = productCategoryDataStore.find(categoryId);
 
             params.put("categories", productCategoryDataStore.getAll());
-            params.put("products", productDataStore.getBy(supplier));
+            params.put("products", productDataStore.getBy(productCategory));
             params.put("suppliers", supplierDataStore.getAll());
+
         }
         context.setVariables(params);
         engine.process("product/index.html", context, resp.getWriter());
