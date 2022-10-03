@@ -26,6 +26,7 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}" />
+    <script src="/static/js/product.js" th:type="module" defer></script>
 </head>
 
 <body>
@@ -38,13 +39,13 @@
     <div class="filter-container">
         <div class="filter-label">Filter by Category</div>
         <div class="filter-items" th:each="category,iterStat : ${categories}">
-            <div><a th:href="@{/(category=${category.getId()})}" th:text="${category.name}"></a></div>
+            <div class="category"><a th:href="@{/home/(category=${category.getId()})}" th:text="${category.name}"></a></div>
         </div>
     </div><br>
     <div class="filter-container">
         <div class="filter-label">Filter by Supplier</div>
         <div class="filter-items" th:each="supplier,iterStat : ${suppliers}">
-            <div><a th:href="@{/(supplier=${supplier.getId()})}" th:text="${supplier.name}"></a></div>
+            <div class="supplier"><a th:href="@{/home/(supplier=${supplier.getId()})}" th:text="${supplier.name}"></a></div>
         </div>
     </div>
 </div>
