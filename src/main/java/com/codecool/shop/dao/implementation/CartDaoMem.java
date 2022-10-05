@@ -2,11 +2,15 @@ package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.LineItem;
+import com.codecool.shop.model.Product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CartDaoMem implements CartDao {
+
+    private HashMap<Product,Integer> cartProducts = new HashMap<>();
     private List<LineItem> items = new ArrayList<>();
     private static CartDaoMem instance = null;
 
@@ -29,6 +33,15 @@ public class CartDaoMem implements CartDao {
         } else {
             itemToAdd.setQuantity(1);
             items.add(itemToAdd);
+        }
+    }
+
+    public void addToCartt(Product product){
+        if(cartProducts.containsKey(product)){
+            cartProducts.put(product, cartProducts.get(product)+1);
+        }
+        else{
+            cartProducts.put(product,1);
         }
     }
 
@@ -58,5 +71,9 @@ public class CartDaoMem implements CartDao {
     @Override
     public List<LineItem> getAll() {
         return items;
+    }
+
+    public HashMap<Product, Integer> getCartProducts() {
+        return this.cartProducts;
     }
 }
