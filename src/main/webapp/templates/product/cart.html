@@ -28,7 +28,7 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}"/>
-    <!--  <script src="/static/js/cart.js" th:type="module" defer></script>-->
+    <script src="/static/js/addToCartMore.js" th:type="module" defer></script>
 </head>
 <body>
 
@@ -41,7 +41,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                            <h6 class="mb-0 text-muted" th:text="${items.size() + ' products'}">0 items</h6>
+                            <h6 class="mb-0 text-muted" th:text="${items.values + ' products'}">0 items</h6>
                         </div>
 
                         <hr class="my-4">
@@ -49,19 +49,18 @@
                         <div class="row mb-4 d-flex justify-content-between align-items-center"
                              th:each="item,iterStat : ${items}">
                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                <h6 class="text-muted" th:text="${item.product.name}">Product name</h6>
+                                <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}">Product name</h6>
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <button class="btn btn-link px-2">Less</button>
+                                <button th:data-less-id="${item.key.id}" class="btn btn-link px-2">Less</button>
 
-                                <label for="form1"></label>
-                                <input id="form1" name="quantity" th:value="${item.getQuantity()}" type="text"
+                                <input th:id="${item.key.id}" name="quantity" th:value="${item.value}" type="text"
                                        class="form-control form-control-sm"/>
 
-                                <button class="btn btn-link px-2">More</button>
+                                <button th:data-more-id="${item.key.id}" class="btn btn-link px-2">More</button>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h6 class="mb-0" th:text="${item.product.getPrice()}">100 USD</h6>
+                                <h6 class="mb-0" th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency}">100 USD</h6>
                             </div>
                         </div>
 
