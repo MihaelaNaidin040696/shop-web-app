@@ -1,5 +1,4 @@
 const addMore = () => {
-
     let addMoreButtons = document.querySelectorAll('[data-more-id]');
 
     for (let btn of addMoreButtons) {
@@ -20,7 +19,8 @@ const addMore = () => {
                 body: JSON.stringify(dataToBePosted)
             });
 
-            let input = document.getElementById('2');
+            let input = document.getElementById(productId);
+            input.value = (parseInt(input.value) + 1).toString();
         });
     }
 };
