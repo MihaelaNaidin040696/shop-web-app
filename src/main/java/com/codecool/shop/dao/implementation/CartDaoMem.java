@@ -54,4 +54,9 @@ public class CartDaoMem implements CartDao {
     public int sizeOfCart () {
         return items.size();
     }
+
+    @Override
+    public List<LineItem> getAll() {
+        return items;
+    }
 }
