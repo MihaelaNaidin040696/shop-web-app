@@ -17,6 +17,10 @@ public class CartDaoMem implements CartDao {
         return instance;
     }
 
+    public List<LineItem> getItems() {
+        return items;
+    }
+
     @Override
     public void addToCart (LineItem itemToAdd) {
         if(items.contains(itemToAdd)) {
@@ -49,5 +53,10 @@ public class CartDaoMem implements CartDao {
     @Override
     public int sizeOfCart () {
         return items.size();
+    }
+
+    @Override
+    public List<LineItem> getAll() {
+        return items;
     }
 }

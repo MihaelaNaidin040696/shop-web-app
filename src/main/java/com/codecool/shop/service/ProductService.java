@@ -1,11 +1,9 @@
 package com.codecool.shop.service;
 
-import com.codecool.shop.dao.ProductCategoryDao;
-import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.*;
+import com.codecool.shop.dao.implementation.*;
+import com.codecool.shop.model.Cart;
+import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
@@ -16,11 +14,19 @@ public class ProductService{
     private ProductDao productDao;
     private ProductCategoryDao productCategoryDao;
     private SupplierDao supplierDao;
+    private OrderDao orderDao;
+    private CartDao cartDao;
 
     public ProductService() {
         this.productDao = ProductDaoMem.getInstance();
         this.productCategoryDao = ProductCategoryDaoMem.getInstance();
         this.supplierDao = SupplierDaoMem.getInstance();
+        this.orderDao = OrderDaoMem.getInstance();
+        this.cartDao = CartDaoMem.getInstance();
+    }
+
+    public OrderDao getOrderDao() {
+        return orderDao;
     }
 
     public ProductDao getProductDao() {
@@ -33,6 +39,30 @@ public class ProductService{
 
     public SupplierDao getSupplierDao() {
         return supplierDao;
+    }
+
+    public void setProductDao(ProductDao productDao) {
+        this.productDao = productDao;
+    }
+
+    public void setProductCategoryDao(ProductCategoryDao productCategoryDao) {
+        this.productCategoryDao = productCategoryDao;
+    }
+
+    public void setSupplierDao(SupplierDao supplierDao) {
+        this.supplierDao = supplierDao;
+    }
+
+    public void setOrderDao(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
+
+    public CartDao getCartDao() {
+        return cartDao;
+    }
+
+    public void setCartDao(CartDao cartDao) {
+        this.cartDao = cartDao;
     }
 
     public ProductCategory getProductCategory(int categoryId){

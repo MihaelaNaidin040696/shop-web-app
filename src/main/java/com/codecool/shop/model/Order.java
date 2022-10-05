@@ -3,7 +3,7 @@ package com.codecool.shop.model;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+public class Order extends BaseModel{
     private final int id;
     private final Date date;
     private  final double totalPrice;
@@ -11,7 +11,8 @@ public class Order {
     private  String shippingAddress;
     private  final Cart cart;
 
-    public Order(int id, Date date, double totalPrice, String billingAddress, String shippingAddress, Cart cart) {
+    public Order(String name, String description, int id, Date date, double totalPrice, String billingAddress, String shippingAddress, Cart cart) {
+        super(name, description);
         this.id = id;
         this.date = date;
         this.totalPrice = totalPrice;
