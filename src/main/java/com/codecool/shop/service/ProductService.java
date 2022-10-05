@@ -1,13 +1,8 @@
 package com.codecool.shop.service;
 
-import com.codecool.shop.dao.OrderDao;
-import com.codecool.shop.dao.ProductCategoryDao;
-import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.OrderDaoMem;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.*;
+import com.codecool.shop.dao.implementation.*;
+import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
@@ -19,12 +14,14 @@ public class ProductService{
     private ProductCategoryDao productCategoryDao;
     private SupplierDao supplierDao;
     private OrderDao orderDao;
+    private CartDao cartDao;
 
     public ProductService() {
         this.productDao = ProductDaoMem.getInstance();
         this.productCategoryDao = ProductCategoryDaoMem.getInstance();
         this.supplierDao = SupplierDaoMem.getInstance();
         this.orderDao = OrderDaoMem.getInstance();
+        this.cartDao = CartDaoMem.getInstance();
     }
 
     public OrderDao getOrderDao() {
