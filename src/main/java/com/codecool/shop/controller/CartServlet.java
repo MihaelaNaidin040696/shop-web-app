@@ -24,7 +24,7 @@ public class CartServlet extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Map<String, Object> params = new HashMap<>();
 
-        params.put("items",productService.getCartDao().getAll());
+        params.put("items",productService.getCartDao().getCartProducts());
         context.setVariables(params);
         engine.process("product/cart.html", context, resp.getWriter());
 
