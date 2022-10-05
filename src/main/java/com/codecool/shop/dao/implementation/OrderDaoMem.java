@@ -9,11 +9,14 @@ public class OrderDaoMem implements OrderDao {
 
     private String name;
     private String address;
+    private int id;
+    private Order order;
 
     private List<Order> data = new ArrayList<>();
     private List<String> infoUser = new ArrayList<>();
 
     private static OrderDaoMem instance = null;
+
 
 
     public static OrderDaoMem getInstance() {
@@ -57,11 +60,34 @@ public class OrderDaoMem implements OrderDao {
     }
 
     @Override
-    public void addInformationFromUser(String info) {
+    public Object addInformationFromUser(String info) {
             infoUser.add(info);
+        return null;
+    }
+
+    @Override
+    public void add(Order order) {
+        order.setId(data.size()+1);
+        data.add(order);
     }
 
     public List<String> getInfoUser() {
         return infoUser;
+    }
+
+    public void addOrders (Order orderToAdd) {
+        if(!data.contains(orderToAdd)){
+            data.add(orderToAdd);
+        }
+    }
+
+    @Override
+    public void clearOrder() {
+        infoUser.clear();
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

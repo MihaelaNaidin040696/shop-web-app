@@ -1,6 +1,7 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.model.Order;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(urlPatterns = {"/order"})
 public class OrderController extends HttpServlet {
@@ -29,13 +32,17 @@ public class OrderController extends HttpServlet {
         ProductService productService = new ProductService();
 
         String username = req.getParameter("name");
-        String address = req.getParameter("address");
+        String billingAddress = req.getParameter("billingAddress");
+        String shippingAddress = req.getParameter("shippingAddress");
 
         productService.getOrderDao().addInformationFromUser(username);
-        productService.getOrderDao().addInformationFromUser(address);
+        productService.getOrderDao().addInformationFromUser(billingAddress);
+        productService.getOrderDao().addInformationFromUser(shippingAddress);
+
         System.out.println(productService.getOrderDao().getInfoUser());
 
+        productService.getOrderDao().clearOrder();
         resp.sendRedirect("index.html");
-//        req.getRequestDispatcher("/order.html").forward(req,resp);
+
     }
 }
