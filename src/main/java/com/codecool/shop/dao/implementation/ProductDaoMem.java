@@ -20,6 +20,14 @@ public class ProductDaoMem implements ProductDao {
     private ProductDaoMem() {
     }
 
+    public List<Product> getData() {
+        return data;
+    }
+
+    public void setData(List<Product> data) {
+        this.data = data;
+    }
+
     public static ProductDaoMem getInstance() {
         if (instance == null) {
             instance = new ProductDaoMem();

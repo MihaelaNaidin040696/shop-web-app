@@ -17,6 +17,10 @@ public class CartDaoMem implements CartDao {
         return instance;
     }
 
+    public List<LineItem> getItems() {
+        return items;
+    }
+
     @Override
     public void addToCart (LineItem itemToAdd) {
         if(items.contains(itemToAdd)) {

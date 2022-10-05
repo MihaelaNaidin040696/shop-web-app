@@ -3,6 +3,7 @@ package com.codecool.shop.service;
 import com.codecool.shop.dao.*;
 import com.codecool.shop.dao.implementation.*;
 import com.codecool.shop.model.Cart;
+import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
@@ -38,6 +39,30 @@ public class ProductService{
 
     public SupplierDao getSupplierDao() {
         return supplierDao;
+    }
+
+    public void setProductDao(ProductDao productDao) {
+        this.productDao = productDao;
+    }
+
+    public void setProductCategoryDao(ProductCategoryDao productCategoryDao) {
+        this.productCategoryDao = productCategoryDao;
+    }
+
+    public void setSupplierDao(SupplierDao supplierDao) {
+        this.supplierDao = supplierDao;
+    }
+
+    public void setOrderDao(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
+
+    public CartDao getCartDao() {
+        return cartDao;
+    }
+
+    public void setCartDao(CartDao cartDao) {
+        this.cartDao = cartDao;
     }
 
     public ProductCategory getProductCategory(int categoryId){
