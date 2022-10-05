@@ -45,6 +45,18 @@ public class CartDaoMem implements CartDao {
         }
     }
 
+    public void removeFromCart(Product product){
+        if(cartProducts.containsKey(product)){
+            cartProducts.put(product,cartProducts.get(product)-1);
+        }
+        else{
+            cartProducts.remove(product);
+        }
+    }
+    //TODO remove from cart
+
+    //
+
     @Override
     public void removeItem (LineItem itemToRemove) {
         items.remove(itemToRemove);
