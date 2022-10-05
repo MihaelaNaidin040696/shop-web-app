@@ -35,7 +35,7 @@ public class CartServlet extends HttpServlet {
         params.put("items", productsHashMap);
         params.put("numberOfItems", numberOfProducts);
         context.setVariables(params);
-        engine.process("product/cart_page.html", context, resp.getWriter());
+        engine.process("product/cart.html", context, resp.getWriter());
 
     }
 }

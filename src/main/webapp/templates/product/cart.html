@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Cart</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}"/>
+    <script src="/static/js/addToCartMore.js" th:type="module" defer></script>
+</head>
+<body>
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                <div class="card-body p-0">
+                    <div class="p-5">
+
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                            <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                            <h6 class="mb-0 text-muted" th:text="${items.values + ' products'}">0 items</h6>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="row mb-4 d-flex justify-content-between align-items-center"
+                             th:each="item,iterStat : ${items}">
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}">Product name</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <button th:data-less-id="${item.key.id}" class="btn btn-link px-2">Less</button>
+
+                                <input th:id="${item.key.id}" name="quantity" th:value="${item.value}" type="text"
+                                       class="form-control form-control-sm"/>
+
+                                <button th:data-more-id="${item.key.id}" class="btn btn-link px-2">More</button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h6 class="mb-0" th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency}">100 USD</h6>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="d-flex justify-content-between mb-5">
+                            <h5 class="text-uppercase">Total price</h5>
+                            <h5>€ 137.00</h5>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <a class="btn btn-dark float-left" th:href="@{/}">Back to shop</a>
+                        <a class="btn btn-dark float-right" th:href="@{#}">Go to payment</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

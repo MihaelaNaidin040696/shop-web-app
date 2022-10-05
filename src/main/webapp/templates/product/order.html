@@ -1,22 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Order</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}"/>
+    <script src="/static/js/order.js" th:type="module" defer></script>
 </head>
 <body>
-<h1>Order page</h1>
-<form action="order" method="post">
-    <input type="text" name="name" placeholder="Name">
-    <br>
-    <input type="text" name="billingAddress" placeholder="Billing Address">
-    <br>
-    <input type="text" name="shippingAddress" placeholder="Shipping Address">
-    <br>
-    <input type="submit" value="Submit">
-</form>
+
+<div class="jumbotron text-center">
+    <h1>Order</h1>
+</div>
+
+<div class="container">
+    <form class="needs-validation" novalidate>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" class="form-control first-name" pattern="[A-Za-z]{1,32}" id="validationCustom01"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid name (only letters).
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" class="form-control last-name" pattern="[A-Za-z]{1,32}" id="validationCustom02"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid name (only letters).
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustomEmail" class="form-label">Email</label>
+                <div class="input-group has-validation">
+                    <input type="email" class="form-control email" id="validationCustomEmail"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid email address.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustomPhone" class="form-label">Phone</label>
+                <div class="input-group has-validation">
+                    <input type="tel" class="form-control phone" pattern="[+]{1}[0-9]{11,14}" id="validationCustomPhone"
+                           required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid phone number.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h3 style="text-align:center"> Billing Address </h3><br>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-2">
+                <label for="validationCustom03" class="form-label">Country</label>
+                <input type="text" class="form-control billing-country" id="validationCustom03" pattern="[A-Za-z]{1,32}"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid country (only letters).
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="validationCustom04" class="form-label">City</label>
+                <input type="text" class="form-control billing-city" id="validationCustom04" pattern="[A-Za-z]{1,32}"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid city (only letters).
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="validationCustom05" class="form-label">Zip</label>
+                <input type="text" class="form-control billing-zip" id="validationCustom05" pattern="[0-9]{6}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid zip (only 6 numbers).
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustom06" class="form-label">Address</label>
+                <input type="text" class="form-control billing-address" id="validationCustom06" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid address.
+                </div>
+            </div>
+        </div>
+        <br>
+        <h3 style="text-align:center"> Shipping Address </h3><br>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-2">
+                <label for="validationCustom07" class="form-label">Country</label>
+                <input type="text" class="form-control shipping-country" id="validationCustom07"
+                       pattern="[A-Za-z]{1,32}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid country (only letters).
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="validationCustom08" class="form-label">City</label>
+                <input type="text" class="form-control shipping-city" id="validationCustom08" pattern="[A-Za-z]{1,32}"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid city (only letters).
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="validationCustom09" class="form-label">Zip</label>
+                <input type="text" class="form-control shipping-zip" id="validationCustom09" pattern="[0-9]{6}"
+                       required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid zip (only 6 numbers).
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustom10" class="form-label">Address</label>
+                <input type="text" class="form-control shipping-address" id="validationCustom10" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid address.
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Go to payment</button>
+        </div>
+        <br><br>
+    </form>
+</div>
 </body>
 </html>
