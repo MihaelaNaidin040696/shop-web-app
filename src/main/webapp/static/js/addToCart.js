@@ -1,11 +1,8 @@
-const addToCart = ()=>{
-    console.log("merge");
+const addToCart = () => {
     let addToCartButtons = document.querySelectorAll(".addToCart");
 
     for (const element of addToCartButtons) {
-
-
-        element.addEventListener("click",async ()=>{
+        element.addEventListener("click", async () => {
 
             let productId = element.getAttribute("data-id");
 
@@ -24,7 +21,7 @@ const addToCart = ()=>{
     }
 
 }
-const init=()=>{
+const init = () => {
     addToCart();
 }
 
