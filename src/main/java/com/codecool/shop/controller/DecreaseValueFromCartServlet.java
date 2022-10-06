@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/drecrease-value"},loadOnStartup = 5)
+@WebServlet(urlPatterns = {"/decrease-value"},loadOnStartup = 5)
 public class DecreaseValueFromCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
