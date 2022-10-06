@@ -18,9 +18,14 @@ const addMore = () => {
                 },
                 body: JSON.stringify(dataToBePosted)
             });
-
+            console.log("intra");
             let input = document.getElementById(productId);
             input.value = (parseInt(input.value) + 1).toString();
+
+            let numberOfItems = document.getElementById("numberOfItems");
+            var number = parseInt(numberOfItems.innerHTML.substring(0,2));
+            number= number +1;
+            numberOfItems.innerHTML = number + " products";
         });
     }
 };
