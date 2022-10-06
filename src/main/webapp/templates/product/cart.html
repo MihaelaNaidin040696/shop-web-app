@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}"/>
     <script src="/static/js/addToCartMore.js" th:type="module" defer></script>
+    <script src="/static/js/decreaseItemValueFromCart.js" th:type="module" defer></script>
 </head>
 <body>
 
@@ -41,7 +42,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                            <h6 class="mb-0 text-muted" th:text="${items.values + ' products'}">0 items</h6>
+                            <h6 class="mb-0 text-muted" id="numberOfItems" th:text="${numberOfItems + ' products'}">0 items</h6>
                         </div>
 
                         <hr class="my-4">
@@ -52,7 +53,7 @@
                                 <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}">Product name</h6>
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <button th:data-less-id="${item.key.id}" class="btn btn-link px-2">Less</button>
+                                <button th:data-less-id="${item.key.id}" class="btn btn-link px-2 decreaseButton">Less</button>
 
                                 <input th:id="${item.key.id}" name="quantity" th:value="${item.value}" type="text"
                                        class="form-control form-control-sm"/>

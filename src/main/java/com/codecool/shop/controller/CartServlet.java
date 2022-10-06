@@ -1,6 +1,7 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.model.Product;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -24,7 +25,15 @@ public class CartServlet extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Map<String, Object> params = new HashMap<>();
 
-        params.put("items",productService.getCartDao().getCartProducts());
+        HashMap<Product, Integer> productsHashMap = productService.getCartDao().getCartProducts();
+
+        int numberOfProducts = 0;
+        for (Map.Entry<Product, Integer> entry : productsHashMap.entrySet()) {
+            numberOfProducts += entry.getValue();
+        }
+
+        params.put("items", productsHashMap);
+        params.put("numberOfItems", numberOfProducts);
         context.setVariables(params);
         engine.process("product/cart.html", context, resp.getWriter());
 

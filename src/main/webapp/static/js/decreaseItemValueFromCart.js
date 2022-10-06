@@ -1,36 +1,39 @@
-const addMore = () => {
-    let addMoreButtons = document.querySelectorAll('[data-more-id]');
+const decreaseValue = () => {
+    let decreasButtons = document.querySelectorAll('[data-less-id]');
 
-    for (let btn of addMoreButtons) {
+    // let decreasButtons = document.querySelectorAll(".decreaseButton");
+
+    for (let btn of decreasButtons) {
         btn.addEventListener("click", async (e) => {
             e.preventDefault();
 
-            let productId = btn.getAttribute("data-more-id");
+            let productId = btn.getAttribute("data-less-id");
 
             const dataToBePosted = {
                 id: productId,
                 quantity: 1,
             };
-            await fetch("/add-to-cart", {
+            await fetch("/decrease-value", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(dataToBePosted)
             });
+            console.log("intra");
             let input = document.getElementById(productId);
-            input.value = (parseInt(input.value) + 1).toString();
+            input.value = (parseInt(input.value) - 1).toString();
 
             let numberOfItems = document.getElementById("numberOfItems");
-            let number = parseInt(numberOfItems.innerHTML.substring(0, 2));
-            number = number + 1;
+            var number = parseInt(numberOfItems.innerHTML.substring(0,2));
+            number= number - 1;
             numberOfItems.innerHTML = number + " products";
         });
     }
 };
 
 const init = () => {
-    addMore();
+    decreaseValue();
 }
 
 init();
