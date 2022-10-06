@@ -31,25 +31,23 @@ const addMore = () => {
     }
 };
 
-const totals=()=>{
-
+const totals = () => {
     let allDivs = document.querySelectorAll(".deleteWhen0");
     let totalSum = 0
     let total = document.querySelector("#total");
     for (const allDiv of allDivs) {
-        totalSum += (parseFloat(allDiv.children[1].children[1].value) * parseFloat(allDiv.children[2].children[0].innerHTML.substring(0,allDiv.children[2].children[0].innerHTML.indexOf(' '))));
+        totalSum += (parseFloat(allDiv.children[1].children[1].value) * parseFloat(allDiv.children[2].children[0].innerHTML.substring(0, allDiv.children[2].children[0].innerHTML.indexOf(' '))));
     }
-    total.innerHTML = "USD "+totalSum;
+    total.innerHTML = totalSum + " EUR";
 }
 
 const totalItem = () => {
-
     let allDivs = document.querySelectorAll(".deleteWhen0");
-    for (const allDiv of allDivs){
+    for (const allDiv of allDivs) {
         let totalProdPrice = allDiv.children[2].children[1];
         let unit = allDiv.children[1].children[1].value;
 
-        totalProdPrice.innerHTML = unit * parseFloat(allDiv.children[2].children[0].innerHTML.substring(0,allDiv.children[2].children[0].innerHTML.indexOf(' '))) + " USD";
+        totalProdPrice.innerHTML = unit * parseFloat(allDiv.children[2].children[0].innerHTML.substring(0, allDiv.children[2].children[0].innerHTML.indexOf(' '))) + " EUR";
     }
 }
 

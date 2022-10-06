@@ -19,22 +19,22 @@ import java.math.BigDecimal;
 public class Initializer implements ServletContextListener {
 
     @Override
-    public void contextInitialized(ServletContextEvent sce) {
+    public void contextInitialized (ServletContextEvent sce) {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier lenovo = new Supplier("Lenovo", "Computers");
+        Supplier lenovo = new Supplier("Lenovo");
         supplierDataStore.add(lenovo);
 
-        Supplier asus = new Supplier("Asus", "Computers");
+        Supplier asus = new Supplier("Asus");
         supplierDataStore.add(asus);
 
-        Supplier apple = new Supplier("Apple", "Phone");
+        Supplier apple = new Supplier("Apple");
         supplierDataStore.add(apple);
 
-        Supplier samsung = new Supplier("Samsung", "Phone");
+        Supplier samsung = new Supplier("Samsung");
         supplierDataStore.add(samsung);
 
         //setting up a new product category

@@ -12,7 +12,7 @@ public class LineItem {
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return "LineItem{" +
                 "product=" + product +
                 ", quantity=" + quantity +
@@ -20,20 +20,20 @@ public class LineItem {
                 '}';
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getId() {
+    public int getId () {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId (int id) {
         this.id = id;
     }
 
     public Product getProduct () {
         return product;
+    }
+
+    public void setProduct (Product product) {
+        this.product = product;
     }
 
     public int getQuantity () {

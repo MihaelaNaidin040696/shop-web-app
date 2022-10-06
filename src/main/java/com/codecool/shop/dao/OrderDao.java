@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface OrderDao {
 
-    Order find(int id);
-    Object addInformationFromUser(String info);
+    Order find (int id);
 
-    void add(Order order);
+    Object addInformationFromUser (String info);
 
-    List<String> getInfoUser();
+    void add (Order order);
 
-    int getId();
+    List<String> getInfoUser ();
+
+    int getId ();
+
     void addOrders (Order orderToAdd);
 
-    void clearOrder();
-
-
+    void clearOrder ();
 }

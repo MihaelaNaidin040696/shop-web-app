@@ -7,34 +7,26 @@ public class ProductCategory extends BaseModel {
     private String department;
     private List<Product> products;
 
-    public ProductCategory(String name, String department, String description) {
+    public ProductCategory (String name, String department, String description) {
         super(name);
         this.department = department;
         this.products = new ArrayList<>();
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
-    public List<Product> getProducts() {
+    public List<Product> getProducts () {
         return this.products;
     }
 
-    public void addProduct(Product product) {
+    public void setProducts (ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public void addProduct (Product product) {
         this.products.add(product);
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return String.format(
                 "id: %1$d," +
                         "name: %2$s, " +

@@ -18,18 +18,15 @@ import java.util.Map;
 @WebServlet(urlPatterns = {"/cart-page"})
 public class CartServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductService productService = new ProductService();
-
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Map<String, Object> params = new HashMap<>();
-
         HashMap<Product, Integer> productsHashMap = productService.getCartDao().getProducts();
 
         int numberOfProducts = 0;
-        int totalSum = 0;
-        for (Map.Entry<Product, Integer> entry : productsHashMap.entrySet()) {
+        for(Map.Entry<Product, Integer> entry : productsHashMap.entrySet()) {
             numberOfProducts += entry.getValue();
         }
 
@@ -37,6 +34,5 @@ public class CartServlet extends HttpServlet {
         params.put("numberOfItems", numberOfProducts);
         context.setVariables(params);
         engine.process("product/cart.html", context, resp.getWriter());
-
     }
 }

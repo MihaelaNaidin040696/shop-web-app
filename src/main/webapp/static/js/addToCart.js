@@ -7,15 +7,12 @@ const addToCart = () => {
             let productId = element.getAttribute("data-id");
 
             const dataToBePosted = {
-                id: productId,
-                quantity: 1,
+                id: productId, quantity: 1,
             };
             await fetch("/add-to-cart", {
-                method: 'POST',
-                headers: {
+                method: 'POST', headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dataToBePosted)
+                }, body: JSON.stringify(dataToBePosted)
             });
         })
     }

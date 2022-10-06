@@ -1,17 +1,16 @@
 package com.codecool.shop.model;
 
 import java.util.Date;
-import java.util.List;
 
-public class Order extends BaseModel{
+public class Order extends BaseModel {
     private final int id;
     private final Date date;
-    private  final double totalPrice;
-    private  String billingAddress;
-    private  String shippingAddress;
-    private  final Cart cart;
+    private final double totalPrice;
+    private final Cart cart;
+    private String billingAddress;
+    private String shippingAddress;
 
-    public Order(String name, String description, int id, Date date, double totalPrice, String billingAddress, String shippingAddress, Cart cart) {
+    public Order (String name, String description, int id, Date date, double totalPrice, String billingAddress, String shippingAddress, Cart cart) {
         super(name, description);
         this.id = id;
         this.date = date;
@@ -21,31 +20,7 @@ public class Order extends BaseModel{
         this.cart = cart;
     }
 
-    public int getId() {
+    public int getId () {
         return id;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public List<LineItem> getAllItemsFromCart(){
-        return cart.getItems();
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
     }
 }

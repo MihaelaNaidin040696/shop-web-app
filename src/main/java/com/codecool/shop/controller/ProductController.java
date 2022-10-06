@@ -1,7 +1,7 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -18,7 +18,7 @@ import java.util.Map;
 public class ProductController extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductService productService = new ProductService();
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
@@ -26,7 +26,7 @@ public class ProductController extends HttpServlet {
 
         Map<String, Object> params = new HashMap<>();
         params.put("categories", productService.getProductCategoryDao().getAll());
-        params.put("products",productService.getProductDao().getAll());
+        params.put("products", productService.getProductDao().getAll());
         params.put("suppliers", productService.getSupplierDao().getAll());
 
         context.setVariables(params);

@@ -6,25 +6,25 @@ import java.util.List;
 public class Supplier extends BaseModel {
     private List<Product> products;
 
-    public Supplier(String name, String description) {
+    public Supplier (String name) {
         super(name);
         this.products = new ArrayList<>();
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
-    public List<Product> getProducts() {
+    public List<Product> getProducts () {
         return this.products;
     }
 
-    public void addProduct(Product product) {
+    public void setProducts (ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public void addProduct (Product product) {
         this.products.add(product);
     }
 
     @Override
-    public String toString() {
+    public String toString () {
         return String.format("id: %1$d, " +
                         "name: %2$s, " +
                         "description: %3$s",

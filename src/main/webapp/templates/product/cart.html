@@ -42,32 +42,37 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-5">
                             <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                            <h6 class="mb-0 text-muted" id="numberOfItems" th:text="${numberOfItems + ' products'}">0 items</h6>
+                            <h6 class="mb-0 text-muted" id="numberOfItems" th:text="${numberOfItems + ' products'}">0
+                                items</h6>
                         </div>
 
                         <hr class="my-4">
 
-    <div th:each="item,iterStat : ${items}">
-                        <div class="row mb-4 d-flex justify-content-between align-items-center deleteWhen0">
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}" th:class="${item.key.defaultPrice}">Product name</h6>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <button th:data-less-id="${item.key.id}" class="btn btn-link px-2 decreaseButton">Less</button>
+                        <div th:each="item,iterStat : ${items}">
+                            <div class="row mb-4 d-flex justify-content-between align-items-center deleteWhen0">
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}"
+                                        th:class="${item.key.defaultPrice}">Product name</h6>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <button th:data-less-id="${item.key.id}" class="btn btn-link px-2 decreaseButton">
+                                        Less
+                                    </button>
 
-                                <input th:id="${item.key.id}" name="quantity" th:value="${item.value}" type="text"
-                                       class="form-control form-control-sm"/>
+                                    <input th:id="${item.key.id}" name="quantity" th:value="${item.value}" type="text"
+                                           class="form-control form-control-sm"/>
 
-                                <button th:data-more-id="${item.key.id}" class="btn btn-link px-2">More</button>
+                                    <button th:data-more-id="${item.key.id}" class="btn btn-link px-2">More</button>
+                                </div>
+                                <div style="display: flex; gap: 100px; margin-right: 20px;">
+                                    <h6 class="mb-0 pricePerUnit"
+                                        th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency} + '/unit'">
+                                        USD</h6>
+                                    <h6 class="prodPrice">Product Price</h6>
+                                </div>
                             </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h6 class="mb-0 pricePerUnit" th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency}"> USD</h6>
-                                <h6 class="prodPrice">Product Price</h6>
 
-                            </div>
                         </div>
-
-    </div>
                         <hr class="my-4">
 
                         <div class="d-flex justify-content-between mb-5">
