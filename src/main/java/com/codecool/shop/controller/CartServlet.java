@@ -28,6 +28,7 @@ public class CartServlet extends HttpServlet {
         HashMap<Product, Integer> productsHashMap = productService.getCartDao().getProducts();
 
         int numberOfProducts = 0;
+        int totalSum = 0;
         for (Map.Entry<Product, Integer> entry : productsHashMap.entrySet()) {
             numberOfProducts += entry.getValue();
         }

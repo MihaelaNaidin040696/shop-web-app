@@ -47,10 +47,10 @@
 
                         <hr class="my-4">
 
-                        <div class="row mb-4 d-flex justify-content-between align-items-center"
-                             th:each="item,iterStat : ${items}">
+    <div th:each="item,iterStat : ${items}">
+                        <div class="row mb-4 d-flex justify-content-between align-items-center deleteWhen0">
                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}">Product name</h6>
+                                <h6 th:id="${item.key.name}" class="text-muted" th:text="${item.key.name}" th:class="${item.key.defaultPrice}">Product name</h6>
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                 <button th:data-less-id="${item.key.id}" class="btn btn-link px-2 decreaseButton">Less</button>
@@ -61,15 +61,19 @@
                                 <button th:data-more-id="${item.key.id}" class="btn btn-link px-2">More</button>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h6 class="mb-0" th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency}">100 USD</h6>
+                                <h6 class="mb-0 pricePerUnit" th:text="${item.key.defaultPrice} + ' ' + ${item.key.defaultCurrency}"> USD</h6>
+                                <h6 class="prodPrice">Product Price</h6>
+
                             </div>
                         </div>
 
+    </div>
                         <hr class="my-4">
 
                         <div class="d-flex justify-content-between mb-5">
                             <h5 class="text-uppercase">Total price</h5>
-                            <h5>€ 137.00</h5>
+
+                            <h5 id="total">USD </h5>
                         </div>
 
                         <hr class="my-4">

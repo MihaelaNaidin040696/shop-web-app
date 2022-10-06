@@ -39,17 +39,17 @@ public class AddToCartController extends HttpServlet {
         System.out.println(product);
 
         productService.getCartDao().addToCart(product);
-        HashMap<Product, Integer> hashMap = productService.getCartDao().getProducts();
+//        HashMap<Product, Integer> hashMap = productService.getCartDao().getProducts();
 
-        for(Map.Entry<Product, Integer> entry : hashMap.entrySet()) {
-            System.out.println(entry.getKey());
-        }
-
-        System.out.println("------------------------------------");
-
-        for(Map.Entry<Product, Integer> entry : hashMap.entrySet()) {
-            System.out.println(entry.getValue());
-        }
+//        for(Map.Entry<Product, Integer> entry : hashMap.entrySet()) {
+//            System.out.println(entry.getKey());
+//        }
+//
+//        System.out.println("------------------------------------");
+//
+//        for(Map.Entry<Product, Integer> entry : hashMap.entrySet()) {
+//            System.out.println(entry.getValue());
+//        }
 
     }
 }
