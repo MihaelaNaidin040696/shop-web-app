@@ -1,91 +1,41 @@
 package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Product;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CartDaoMem implements CartDao {
-
-    private HashMap<Product,Integer> cartProducts = new HashMap<>();
-    private List<LineItem> items = new ArrayList<>();
     private static CartDaoMem instance = null;
+    private HashMap<Product, Integer> products = new HashMap<>();
 
-    public static CartDaoMem getInstance() {
-        if (instance == null) {
+    public static CartDaoMem getInstance () {
+        if(instance == null) {
             instance = new CartDaoMem();
         }
         return instance;
     }
 
-    public List<LineItem> getItems() {
-        return items;
-    }
-
     @Override
-    public void addToCart (LineItem itemToAdd) {
-        if(items.contains(itemToAdd)) {
-            LineItem existingItem = items.get(items.indexOf(itemToAdd));
-            existingItem.setQuantity(existingItem.getQuantity() + 1);
+    public void addToCart (Product product) {
+        if(products.containsKey(product)) {
+            products.put(product, products.get(product) + 1);
         } else {
-            itemToAdd.setQuantity(1);
-            items.add(itemToAdd);
-        }
-    }
-
-    public void addToCartt(Product product){
-        if(cartProducts.containsKey(product)){
-            cartProducts.put(product, cartProducts.get(product)+1);
-        }
-        else{
-            cartProducts.put(product,1);
-        }
-    }
-
-    public void removeFromCart(Product product){
-        if(cartProducts.containsKey(product)){
-            cartProducts.put(product,cartProducts.get(product)-1);
-        }
-        else{
-            cartProducts.remove(product);
-        }
-    }
-    //TODO remove from cart
-
-    //
-
-    @Override
-    public void removeItem (LineItem itemToRemove) {
-        items.remove(itemToRemove);
-    }
-
-    @Override
-    public void decreaseQuantity (LineItem item) {
-        if(items.contains(item)){
-            LineItem existingItem = items.get(items.indexOf(item));
-            existingItem.setQuantity(existingItem.getQuantity() - 1);
+            products.put(product, 1);
         }
     }
 
     @Override
-    public void clearCart () {
-        items.clear();
+    public void removeFromCart (Product product) {
+        if(products.containsKey(product)) {
+            products.put(product, products.get(product) - 1);
+        } else {
+            products.remove(product);
+        }
     }
 
     @Override
-    public int sizeOfCart () {
-        return items.size();
-    }
-
-    @Override
-    public List<LineItem> getAll() {
-        return items;
-    }
-
-    public HashMap<Product, Integer> getCartProducts() {
-        return this.cartProducts;
+    public HashMap<Product, Integer> getProducts () {
+        return this.products;
     }
 }

@@ -1,10 +1,6 @@
 package com.codecool.shop.controller;
 
 
-import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.service.ProductService;
 
@@ -16,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet(urlPatterns = {"/add-to-cart"},loadOnStartup = 4)
@@ -25,12 +20,6 @@ public class AddToCartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductService productService = new ProductService();
-
-        CartDaoMem cartDaoMem = CartDaoMem.getInstance();
-        ProductDao productDao = ProductDaoMem.getInstance();
-
-        List<LineItem> listOfItems = cartDaoMem.getItems();
-        List<Product> listOfProducts = productDao.getAll();
 
         StringBuffer buffer = new StringBuffer();
         String line;
@@ -49,8 +38,8 @@ public class AddToCartController extends HttpServlet {
         Product product = productService.getProductDao().find(Integer.parseInt(productId));
         System.out.println(product);
 
-        productService.getCartDao().addToCartt(product);
-        HashMap<Product, Integer> hashMap = productService.getCartDao().getCartProducts();
+        productService.getCartDao().addToCart(product);
+        HashMap<Product, Integer> hashMap = productService.getCartDao().getProducts();
 
         for(Map.Entry<Product, Integer> entry : hashMap.entrySet()) {
             System.out.println(entry.getKey());
