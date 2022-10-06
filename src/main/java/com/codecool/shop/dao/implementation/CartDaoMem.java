@@ -4,6 +4,7 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.Product;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CartDaoMem implements CartDao {
     private static CartDaoMem instance = null;
@@ -27,7 +28,7 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void removeFromCart (Product product) {
-        if(products.containsKey(product)) {
+        if (products.get(product) > 1) {
             products.put(product, products.get(product) - 1);
         } else {
             products.remove(product);

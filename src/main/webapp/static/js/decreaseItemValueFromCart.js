@@ -1,8 +1,6 @@
 const decreaseValue = () => {
     let decreasButtons = document.querySelectorAll('[data-less-id]');
 
-    // let decreasButtons = document.querySelectorAll(".decreaseButton");
-
     for (let btn of decreasButtons) {
         btn.addEventListener("click", async (e) => {
             e.preventDefault();
@@ -24,6 +22,13 @@ const decreaseValue = () => {
             let input = document.getElementById(productId);
             input.value = (parseInt(input.value) - 1).toString();
 
+            let deleteWhen0 = document.querySelectorAll(".deleteWhen0");
+            deleteWhen0.forEach(element=>{
+                let input = document.getElementById(productId);
+                if(parseInt(element.children[1].children[1].value)<1){
+                    element.remove();
+                }
+            })
             let numberOfItems = document.getElementById("numberOfItems");
             var number = parseInt(numberOfItems.innerHTML.substring(0,2));
             number= number - 1;
@@ -32,8 +37,10 @@ const decreaseValue = () => {
     }
 };
 
+
 const init = () => {
     decreaseValue();
+
 }
 
 init();
