@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface CartDao {
     void addToCartt(Product product);
+    void removeFromCart(Product product);
     void addToCart(LineItem itemToAdd);
     void removeItem(LineItem itemToRemove);
     void decreaseQuantity(LineItem item);
