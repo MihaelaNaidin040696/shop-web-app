@@ -21,6 +21,7 @@ const addMore = () => {
             });
 
             let input = document.getElementById('2');
+            console.log(input);
         });
     }
 };
