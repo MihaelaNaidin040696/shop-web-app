@@ -25,23 +25,64 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier amazon = new Supplier("Amazon", "Digital content and services");
-        supplierDataStore.add(amazon);
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
 
-        //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        productCategoryDataStore.add(tablet);
+        Supplier asus = new Supplier("Asus", "Computers");
+        supplierDataStore.add(asus);
 
-        ProductCategory smartphone = new ProductCategory("Smartphone", "Phone", "Something...");
+        Supplier apple = new Supplier("Apple", "Phone");
+        supplierDataStore.add(apple);
+
+        Supplier samsung = new Supplier("Samsung", "Phone");
+        supplierDataStore.add(samsung);
+
+        //setting up a new product category
+        ProductCategory laptop = new ProductCategory("Laptop", "Computer", "");
+        productCategoryDataStore.add(laptop);
+
+        ProductCategory smartphone = new ProductCategory("Smartphone", "Phone", "");
         productCategoryDataStore.add(smartphone);
 
-        //setting up products and printing it
-        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
-        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+        ProductCategory tablet = new ProductCategory("Tablet", "Phone", "");
+        productCategoryDataStore.add(tablet);
 
-        productDataStore.add(new Product("Iphone 2000", new BigDecimal("150"), "USD", "Something", smartphone, amazon));
+        //setting up products and printing it
+        productDataStore.add(new Product("Lenovo Yoga Slim 7",
+                new BigDecimal("600"), "EUR", "Ultra portable laptop with AMD Ryzen 7 5800U processor, 13.3\", 16GB, Windows 11 Home, Light Silver",
+                laptop, lenovo));
+
+        productDataStore.add(new Product("Lenovo IdeaPad Gaming 3",
+                new BigDecimal("750"), "EUR", "Lenovo laptop with AMD Ryzen™ 5 5600H processor up to 4.20 GHz, 15.6\", Full HD, 16GB",
+                laptop, lenovo));
+
+        productDataStore.add(new Product("Apple iPhone 14 Pro",
+                new BigDecimal("900"), "EUR", "Mobile phone Apple iPhone 14 Pro, 128GB, 5G, 48MP main camera, crash detection, Deep Purple",
+                smartphone, apple));
+
+        productDataStore.add(new Product("Samsung Galaxy S22",
+                new BigDecimal("490"), "EUR", "Mobile phone Samsung Galaxy S22, Dual SIM, 256GB, 8GB RAM, 5G, Phantom Black",
+                smartphone, samsung));
+
+        productDataStore.add(new Product("Samsung Galaxy Z Flip4",
+                new BigDecimal("370"), "EUR", "Phone Samsung Z Flip4 5G, 256GB, 8GB RAM, Dual SIM, Bora Purple",
+                smartphone, samsung));
+
+        productDataStore.add(new Product("Asus TUF F15",
+                new BigDecimal("840"), "EUR", "Intel Core i7-11800H up to 4.6GHz, 15.6\" Full HD, 8GB, Eclipse Gray",
+                laptop, asus));
+
+        productDataStore.add(new Product("Lenovo P11 Plus",
+                new BigDecimal("200"), "EUR", "Lenovo P11 Plus tablet, 11\", 6GB, 128GB, Wi-Fi + 4G, Slate Gray",
+                tablet, lenovo));
+
+        productDataStore.add(new Product("APPLE iPad 9",
+                new BigDecimal("350"), "EUR", "Tablet Apple iPad 9 (2021), 10.2\", 64GB, Wi-Fi, Space Gray",
+                tablet, apple));
+
+        productDataStore.add(new Product("Samsung Galaxy Tab S8",
+                new BigDecimal("180"), "EUR", "Tablet Samsung Galaxy Tab S8, 11\", 128GB, 8GB RAM, Wi-Fi + 5G, Pink Gold",
+                tablet, samsung));
+
     }
 }
