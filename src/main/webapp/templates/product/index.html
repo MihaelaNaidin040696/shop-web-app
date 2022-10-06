@@ -26,6 +26,9 @@
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom.css}" />
@@ -38,52 +41,52 @@
     <h1>Codecool Shop</h1>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="navbar-text">
-                    <p>Filter products by: </p>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButtonCategory" data-bs-toggle="dropdown" aria-expanded="false">
-                        Category
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li th:each="category,iterStat : ${categories}">
-                            <ul>
-                                <li><a class="dropdown-item" th:href="@{/category/(category=${category.getId()})}"
-                                       th:text="${category.name}">Supplier Name</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButtonSupplier" data-bs-toggle="dropdown" aria-expanded="false">
-                        Supplier
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li th:each="supplier,iterStat : ${suppliers}">
-                            <ul>
-                                <li><a class="dropdown-item" th:href="@{/supplier/(supplier=${supplier.getId()})}"
-                                       th:text="${supplier.name}">Supplier Name</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart-page">Go to cart</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="navbar-text" style="margin-right: 10px;">
+                        <p>Filter products by: </p>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-right: 5px;">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButtonCategory" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li th:each="category,iterStat : ${categories}">
+                                <ul>
+                                    <li><a class="dropdown-item" th:href="@{/category/(category=${category.getId()})}"
+                                           th:text="${category.name}">Supplier Name</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButtonSupplier" data-bs-toggle="dropdown" aria-expanded="false">
+                            Supplier
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li th:each="supplier,iterStat : ${suppliers}">
+                                <ul>
+                                    <li><a class="dropdown-item" th:href="@{/supplier/(supplier=${supplier.getId()})}"
+                                           th:text="${supplier.name}">Supplier Name</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart-page"><strong> Go to cart <i class="bi-cart2"></i> </strong> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
@@ -98,7 +101,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success addToCart" th:data-id="${prod.id}">Add to cart</a>
+                        <a class="btn btn-dark addToCart" style="color: white" th:data-id="${prod.id}">Add to cart</a>
                     </div>
                 </div>
             </div>
