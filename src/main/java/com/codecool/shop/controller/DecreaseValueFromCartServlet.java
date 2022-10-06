@@ -1,8 +1,5 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.service.ProductService;
 
@@ -39,7 +36,7 @@ public class DecreaseValueFromCartServlet extends HttpServlet {
 
         productService.getCartDao().removeFromCart(product);
 
-        HashMap<Product, Integer> hashMap = productService.getCartDao().getCartProducts();
+        HashMap<Product, Integer> hashMap = productService.getCartDao().getProducts();
 
         for(Map.Entry<Product, Integer> entry : hashMap.entrySet()){
             System.out.println(entry.getKey());

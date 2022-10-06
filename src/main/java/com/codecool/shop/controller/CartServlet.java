@@ -25,7 +25,7 @@ public class CartServlet extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Map<String, Object> params = new HashMap<>();
 
-        HashMap<Product, Integer> productsHashMap = productService.getCartDao().getCartProducts();
+        HashMap<Product, Integer> productsHashMap = productService.getCartDao().getProducts();
 
         int numberOfProducts = 0;
         for (Map.Entry<Product, Integer> entry : productsHashMap.entrySet()) {
