@@ -4,16 +4,11 @@
 
 
 ### Description:  
-- 💻E-commerce website where customers can buy phones, laptops and tablets   
-  
-
-- 📱Customers can filter and order the products by categories and suppliers  
-  
-
-- 📦Add items to cart, change the quantity and order them 
-  
-
-- 💸Order products after filling the delivery information and card details for payment 
+- 💻E-commerce website where customers can buy devices
+- 📱Customers can filter the products by categories and suppliers  
+- 📦Add items to cart, change the quantity and place the order
+- 💸The order will be proceed after filling the delivery information and card details for payment 
+- 🛒No database used for the application, the products are stored in memory
   
 
 <br/>  
